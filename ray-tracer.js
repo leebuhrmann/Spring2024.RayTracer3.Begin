@@ -18,6 +18,9 @@ async function main() {
       if (!image[x][y])
         image[x][y] = []
 
+        if(x == 200 && y == 200){
+          console.log("Hi")
+        }
       let color = render(x, y);
       ctx.fillStyle = `rgb(${color.r}, ${color.g}, ${color.b})`
       ctx.fillRect(x, y, 1, 1)
@@ -38,31 +41,12 @@ function render(x, y) {
   let direction = Scene.scene.camera.getDirection(startX / (width / 2), startY / (height / 2));
 
   let result = closestCollision(origin, direction, null, 1);
-  if (!result) return { r: 128, g: 128, b: 128 };
-  // if(true) return {r:128, g:128,b:128}
+  if (!result) return new Vector3(128, 128, 128);
 
   //Get the location of the collision
-  let rayTracedPixel = result.rayTracedObject.shader.illuminateObject()
+  let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 0)
   return rayTracedPixel
 
-  let ambientLight = { r: 10, g: 10, b: 10 };
-  let diffuseLight = { r: 0, g: 0, b: 0 };
-  let specularHighlight = { r: 0, g: 0, b: 0 }
-
-  let color = {
-    r: ambientLight.r + diffuseLight.r + specularHighlight.r,
-    g: ambientLight.g + diffuseLight.g + specularHighlight.g,
-    b: ambientLight.b + diffuseLight.b + specularHighlight.b
-  }
-
-
-  //Use the shader to calculate the color at this collision
-
-
-
-  return color;
-
-  //return {r:255,g:255,b:255};
 }
 
 function closestCollision(origin, direction, ignored = null, remaining = 1) {
