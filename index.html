@@ -22,6 +22,7 @@
   <script src="rt-object.js"></script>
   <script src="shader.js"></script>
   <script src="scene.js"></script>
+  <script src="sphere.js"></script>
   <script>
     width = 400;
     height = 400
@@ -51,7 +52,8 @@ f 1/1/1 5/1/1 2/1/1
 
     let planeScenePerspective = new Scene(
       [
-        new RayTracedObject(Mesh.fromOBJ(planeString),
+        new RayTracedObject(new Sphere(new Vector3(0,0,0), 50),
+        //new RayTracedObject(Mesh.fromOBJ(planeString),
          // new MixShader(ambientShader, diffuseShader, 0)
          diffuseShader
         )
