@@ -30,7 +30,7 @@ class Sphere {
     let B = 2 * d.dot(oMinusC);
     let C = (d.dot(oMinusC)) ** 2 - this.radius ** 2
 
-    let discriminant = B ** 2 - 4 * A * C;
+    let discriminant = (d.dot(oMinusC)) ** 2 - (oMinusC.dot(oMinusC) - r ** 2)
 
     if (discriminant <= 0) {
       return undefined;
@@ -38,7 +38,7 @@ class Sphere {
 
 
 
-    let sqrt = Math.sqrt((d.dot(oMinusC)) ** 2 - (oMinusC.dot(oMinusC) - r ** 2));
+    let sqrt = Math.sqrt(discriminant)
     let t1 = (-d.dot(oMinusC) - sqrt)
     let t2 = (-d.dot(oMinusC) + sqrt)
 

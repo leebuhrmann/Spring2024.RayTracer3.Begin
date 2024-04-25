@@ -46,32 +46,18 @@ f 1/1/1 5/1/1 2/1/1
 `
 
     let ambientShader = new AmbientShader(new Vector3(0, 50, 0))
-    let diffuseShader = new DiffuseShader(new Vector3(255, 255, 255), new Vector3(0, 0, 1).normalize());
-
-
+    //let diffuseShader = new DiffuseShader(new Vector3(255, 255, 255), new Vector3(0, 0, 1).normalize());
 
     let planeScenePerspective = new Scene(
-      [
-        new RayTracedObject(new Sphere(new Vector3(0,0,0), 50),
-        //new RayTracedObject(Mesh.fromOBJ(planeString),
-         // new MixShader(ambientShader, diffuseShader, 0)
-         diffuseShader
-        )
-      ],
+      [new RayTracedObject(Mesh.fromOBJ(planeString), ambientShader)],
       new Camera(new Vector3(0, 0, 100), new Vector3(0, 0, -1), Vector3.up, Camera.Perspective, Math.PI / 4),
       []
     );
 
-
-
-
     Scene.scene = planeScenePerspective;
 
   </script>
-
   <script src="ray-tracer.js"></script>
-
-
 
 </body>
 
