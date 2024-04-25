@@ -84,10 +84,14 @@ class Mesh {
     }
 
     //Generate a triangle
-    let triangle = new Triangle(fs[0].points[0], fs[0].points[1], fs[0].points[2])
+    let all = []
+    for(let f of fs){
+      let triangle = new Triangle(f.points[0], f.points[1], f.points[2])
+      all.push(triangle)
+    }
     
     //Generate a mesh
-    let mesh = new Mesh([triangle]);
+    let mesh = new Mesh(all);
     return mesh;
   }
 
