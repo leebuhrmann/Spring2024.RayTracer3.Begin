@@ -18,7 +18,6 @@ class Camera{
       //Assume it's perspective
       return this.origin;
     }
-
   }
   getDirection(x,y){
     if(this.type == Camera.Orthographic){

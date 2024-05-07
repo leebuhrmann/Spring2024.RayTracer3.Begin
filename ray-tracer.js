@@ -46,7 +46,6 @@ function render(x, y) {
   //Get the location of the collision
   let rayTracedPixel = result.rayTracedObject.shader.illuminateObject(origin, result.collisionLocation, result.normalAtCollision, result.rayTracedObject, 0)
   return rayTracedPixel
-
 }
 
 function closestCollision(origin, direction, ignored = null, remaining = 1) {

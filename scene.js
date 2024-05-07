@@ -6,6 +6,5 @@ class Scene{
     this.lights = lights;
     this.options = options;
   }
-
 }
 
